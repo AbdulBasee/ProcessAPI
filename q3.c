@@ -38,3 +38,10 @@ int main()
     close(file);
     return 0;
 }
+
+
+/*
+
+references
+https://github.com/ahmedbilal/OSTEP-Solution/blob/master/Chapter%205/question3.c
+*/

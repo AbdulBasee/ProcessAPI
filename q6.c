@@ -23,3 +23,7 @@ int main()
         fprintf(stderr, "Error may have  occurred during fork()");
     }
 }
+/*
+https://github.com/ahmedbilal/OSTEP-Solution/blob/master/Chapter%205/question7.c
+*/
+

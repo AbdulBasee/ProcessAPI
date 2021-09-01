@@ -1,62 +1,42 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include <string.h>
-#include <fcntl.h>
+
+#include <sys/types.h>
 #include <sys/wait.h>
-#define BUFSZE 32
 
 
+#include<stdio.h>
+#include<unistd.h>
+#include<string.h>
+#include<stdlib.h>
+#define MSGSIZE 100
 
-int
-main(int argc, char *argv[])
-{
-    // Setup our pipe
-    char buff[BUFSZE];
-    int  ar[2];
-
-    if (pipe(p) < 0)
-      exit(1);
-
-    int ab  = fork();
-    if (ab < 0) {
-        
-                       // in case the fork fails
-
-        fprintf(stderr, "The first fork has  failed\n");
-        exit(1);
-    } else if (ab == 0) {
-	                      // First child
-       printf(" Child #1 ");
-       close(ar[0]);                                 
-       dup2(ar[1], 1); 
-       printf(" The above is sent to the pipe_");
-    } else {
-                              // The parent
-        int ab2  = fork();
-        if (ab2  < 0) {
-          fprintf(stderr, "fork #2 failed\n");
-          exit(1);
-        } else if (ab2 == 0) {
-          // Child #2
-          printf(" Child #2 ");
-          close(ar[1]);      // Only read here
-          dup2(ar[0], 0);    // Redirect stdin to pipe read
-
-          /* 
-
-          char buff[512];   // this crates a buffer
-          read(STDIN_FILENO, buff, 512);  read from stdin
-          printf("%s", buff);    //buffer is printed
-
-        } else {
-          // Initial parent process
-          /* If we wait for rc1 then it could finish before rc2 is done,
-           * giving us some strange behavior. */
-
-          int wc = waitpid(ab2, NULL, 0);
-          printf("goodbye");
-        }
+int main(){
+   char *msg="Hello from one child1";
+   char inbuf[MSGSIZE];
+   int p[2],pid1,pid2;
+  
+   if(pipe(p)<0){   //creating pipe for communication
+       exit(1);
     }
-    return 0;
+  
+   pid1=fork();//creating first child process
+  
+   if(pid1 > 0){//parent process
+       pid2= fork();//creating another child process
+       if(pid2 > 0){  //parent process
+          wait(NULL);
+       }
+       else if(pid2==0){//child2 process
+           printf("Receiving message in child2\n");
+           read(p[0],inbuf,MSGSIZE);
+           printf("%s\n",inbuf);
+       }
+   }else if(pid1==0){//child1 process
+       printf("Sendning message from child1\n");
+       write(p[1],msg,strlen(msg));
+   }else
+       exit(1);
+  
+   return 0;
 }
+
+

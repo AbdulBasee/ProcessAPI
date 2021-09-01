@@ -33,3 +33,9 @@ int main()
         fprintf(stderr, "Error did occur  during the  fork()");
     }
 }
+
+
+/*
+references
+https://github.com/ahmedbilal/OSTEP-Solution/blob/master/Chapter%205/question4.c
+*/
