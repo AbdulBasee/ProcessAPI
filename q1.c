@@ -44,6 +44,9 @@ int main() {
 /**************************************************
 Name: AbdulBaseer
 Question 1: 
-Ans) 
+Ans) When we call fork(), it creats a copy of the parent process. 
+   The child, and parent have their own specific addresses in the memory, and they don't interfare with
+   each othe's momory space. Each maintain their own version of the variables.
 
 ******/
+ 

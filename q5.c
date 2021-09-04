@@ -24,6 +24,10 @@ int main()
     }
 }
 
+/*
+the function wait() returns the process id of the terminated child. When there is an error,  negative one is returned. 
+
+*/
 /* 
 https://github.com/ahmedbilal/OSTEP-Solution/blob/master/Chapter%205/question7.c
 */

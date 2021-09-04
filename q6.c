@@ -24,6 +24,13 @@ int main()
     }
 }
 /*
+The function waitpid() is useful if we want to wait for a specific child process instead of waiting for
+ all the child processes to exit. 
+
+*/
+
+
+/*
 https://github.com/ahmedbilal/OSTEP-Solution/blob/master/Chapter%205/question7.c
 */
 

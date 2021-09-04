@@ -43,7 +43,8 @@ int main()
 /*********************************************
 Your name:
 Question 2:  
-ans) Yes, when a fork call happens, the file descriptor value in both of the processes are the same. The 
+ans) Yes, when a fork call happens, the file descriptor value in both of the processes are the same.Both 
+  the parent and the child can write to the file, but the order is no determined on which one will do first.  
 *********************************************/
 
 

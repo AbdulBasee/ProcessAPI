@@ -21,6 +21,9 @@ int main()
         printf("Error may have  occurred during fork()\n");
     }
 }
+/*
+When stdout file descriptor is closed, it prevents us writing on the screen using printf(). 
+*/
 
 /*Comment starts
 https://github.com/ahmedbilal/OSTEP-Solution/blob/master/Chapter%205/question7.c

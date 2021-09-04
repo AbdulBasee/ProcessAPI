@@ -36,6 +36,13 @@ int main()
 
 
 /*
+Functions which have l in their name require arguments. Also, comma is added. 
+The function which have v in their name require arguments as vector array (v -> vector)  
+
+*/
+
+/*
 references
 https://github.com/ahmedbilal/OSTEP-Solution/blob/master/Chapter%205/question4.c
 */
+
